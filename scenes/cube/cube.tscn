@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://iqmp873yx215"]
+
+[ext_resource type="PackedScene" uid="uid://b4l2qad41a85" path="res://scenes/face_root/face_root.tscn" id="1_1u12g"]
+[ext_resource type="Script" path="res://scenes/cube/cube.gd" id="1_la6jm"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_j6vt1"]
+bounce = 0.5
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fsww5"]
+
+[node name="Cube" type="RigidBody3D"]
+mass = 7.18
+physics_material_override = SubResource("PhysicsMaterial_j6vt1")
+freeze = true
+script = ExtResource("1_la6jm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_fsww5")
+
+[node name="back" parent="." instance=ExtResource("1_1u12g")]
+face_direction = 5
+color = Color(1, 0, 0, 1)
+
+[node name="front" parent="." instance=ExtResource("1_1u12g")]
+transform = Transform3D(1, 0, 0, 0, -1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0)
+face_direction = 4
+color = Color(0, 1, 0, 1)
+
+[node name="up" parent="." instance=ExtResource("1_1u12g")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+color = Color(0, 0, 1, 1)
+
+[node name="down" parent="." instance=ExtResource("1_1u12g")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+face_direction = 1
+color = Color(1, 1, 0, 1)
+
+[node name="left" parent="." instance=ExtResource("1_1u12g")]
+transform = Transform3D(-4.37114e-08, 1.74846e-07, -1, 0, 1, 1.74846e-07, 1, 7.64274e-15, -4.37114e-08, 0, 0, 0)
+face_direction = 1
+color = Color(1, 1, 1, 1)
+
+[node name="right" parent="." instance=ExtResource("1_1u12g")]
+transform = Transform3D(-4.37114e-08, -3.49691e-07, 1, 0, 1, 3.49691e-07, -1, 1.52855e-14, -4.37114e-08, 0, 0, 0)
+face_direction = 1
+color = Color(0.953281, 0.582322, 0.670341, 1)

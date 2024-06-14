@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://b4l2qad41a85"]
+
+[ext_resource type="Script" path="res://scenes/face_root/face_root.gd" id="1_61kqp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1gq3m"]
+cull_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_i328w"]
+material = SubResource("StandardMaterial3D_1gq3m")
+
+[node name="FaceRoot" type="Node3D"]
+script = ExtResource("1_61kqp")
+
+[node name="Mesh" type="CSGMesh3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0.49)
+mesh = SubResource("QuadMesh_i328w")
+
+[node name="RayCast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0.49)
