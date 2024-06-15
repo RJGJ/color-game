@@ -11,9 +11,16 @@ config_version=5
 [application]
 
 config/name="Color Game"
-run/main_scene="res://scenes/game/game.tscn"
+run/main_scene="res://scenes/the_game/the_game.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
+
+[display]
+
+window/size/viewport_width=360
+window/size/viewport_height=640
+window/size/resizable=false
+window/vsync/vsync_mode=0
 
 [importer_defaults]
 

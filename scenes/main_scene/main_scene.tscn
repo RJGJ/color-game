@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=3 uid="uid://d256bw3g7vw6r"]
+
+[ext_resource type="Script" path="res://scenes/main_scene/main_scene.gd" id="1_bd07b"]
+[ext_resource type="Script" path="res://scripts/CubeSpawner.gd" id="2_jcj2r"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tv2rs"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="BoxMesh" id="BoxMesh_mniyf"]
+size = Vector3(10, 0.1, 10)
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_d40ef"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_vx7d6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3t4u5"]
+size = Vector3(16.4491, 6.01773, 0.35791)
+
+[node name="MainScene" type="Node"]
+script = ExtResource("1_bd07b")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="CubeSpawner" type="Node3D" parent="." node_paths=PackedStringArray("spawns")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.171875, 0.0974121, -1.21359)
+script = ExtResource("2_jcj2r")
+spawns = [NodePath("Spawn"), NodePath("Spawn2"), NodePath("Spawn3")]
+
+[node name="Spawn" type="Node3D" parent="CubeSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8.55136, 3.78311)
+
+[node name="Spawn2" type="Node3D" parent="CubeSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.81223, 8.55136, 3.78311)
+
+[node name="Spawn3" type="Node3D" parent="CubeSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.44832, 8.55136, 3.78311)
+
+[node name="Environment" type="Node" parent="."]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Environment"]
+transform = Transform3D(-0.992302, 5.54492e-08, -0.123844, -0.0359645, 0.956905, 0.288166, 0.118507, 0.290402, -0.949538, -24.6914, 6.34705, -24.8531)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Environment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, -6)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, -4.37114e-08, 7.57104e-08, 0, 0.866025, 0.5, -8.74228e-08, 0.5, -0.866025, 0, 6.894, -13.876)
+
+[node name="Board" type="Node" parent="."]
+
+[node name="Bed" type="StaticBody3D" parent="Board"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board/Bed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.89834)
+shape = SubResource("BoxShape3D_tv2rs")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Board/Bed"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.89834)
+mesh = SubResource("BoxMesh_mniyf")
+
+[node name="Ramp" type="StaticBody3D" parent="Board"]
+transform = Transform3D(1, 0, 0, 0, 0.974925, -0.222535, 0, 0.222535, 0.974925, 0, 0.200138, 0.295454)
+physics_material_override = SubResource("PhysicsMaterial_d40ef")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Board/Ramp"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 4, 1)
+shape = SubResource("BoxShape3D_tv2rs")
+
+[node name="CSGMesh3D" type="CSGMesh3D" parent="Board/Ramp"]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0.866025, 0, -0.866025, 0.5, 0, 4, 1)
+mesh = SubResource("BoxMesh_mniyf")
+
+[node name="Wall" type="StaticBody3D" parent="Board"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.05138, -11.0736)
+physics_material_override = SubResource("PhysicsMaterial_vx7d6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Board/Wall"]
+shape = SubResource("BoxShape3D_3t4u5")
+
+[node name="Wall2" type="StaticBody3D" parent="Board"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.14688, 3.77984, -6.06884)
+physics_material_override = SubResource("PhysicsMaterial_vx7d6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Board/Wall2"]
+transform = Transform3D(0.999991, 0, -1.42109e-13, 0, 1, 0, 1.42109e-13, 0, 0.999991, 0, -0.0380397, 0)
+shape = SubResource("BoxShape3D_3t4u5")
+
+[node name="Wall3" type="StaticBody3D" parent="Board"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.28352, 3.78045, -6.24002)
+physics_material_override = SubResource("PhysicsMaterial_vx7d6")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Board/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.21685, 0, -9.53674e-07)
+shape = SubResource("BoxShape3D_3t4u5")
